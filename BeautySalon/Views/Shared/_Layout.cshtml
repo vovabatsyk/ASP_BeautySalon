@@ -23,11 +23,9 @@
         </div>
         <nav>
             <ul>
-                <li><a href="/">Головна</a></li>
-                <li><a href="/blog">Новини</a></li>
-                <li>
-                    <a href="/admin/login">Адміністратор</a>
-                </li>
+                <li><a asp-controller="Home"  asp-action="Index">Головна</a></li>
+                <li><a asp-controller="Blog"  asp-action="Index">Новини</a></li>
+                <li><a asp-controller="Admin"  asp-action="Login">Адміністратор</a></li>
             </ul>
         </nav>
     </div>
