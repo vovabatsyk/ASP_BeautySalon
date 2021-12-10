@@ -8,11 +8,14 @@
     background-size: cover
 }
 
+.login-wrapper {
+    height: 100vh;
+}
 
 .login {
     position: relative;
-    height: 100vh;
     width: 405px;
+    max-height: 500px;
     margin: auto;
     padding: 60px 60px;
     background: url(https://1.cms.s81c.com/sites/default/files/2020-03-20/ibmSec2019_auroraSmallDotsRight_1600x900_8.png) no-repeat center center #505050;
@@ -164,11 +167,20 @@ hr {
     position: relative;
 }
 
-a {
+a .btn {
     text-align: center;
     display: block;
     top: 120px;
     position: relative;
     text-decoration: none;
     color: rgba(255, 255, 255, 0.2);
+    
+}
+
+a {
+    margin-top: 20px;
+}
+
+.btn:hover {
+    color: red;
 }
