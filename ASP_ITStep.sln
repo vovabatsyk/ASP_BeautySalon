@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BeautySalon", "BeautySalon\BeautySalon.csproj", "{5C9B540C-C9A7-449A-A1BB-BEADC77A97F0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeautySalon", "BeautySalon\BeautySalon.csproj", "{D6504F86-EB5A-4F9B-9A22-F138980642BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeautySalon.Data", "BeautySalon.Data\BeautySalon.Data.csproj", "{55447F02-22C1-4620-B38E-62D1C1FF5D39}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeautySalon.Services", "BeautySalon.Services\BeautySalon.Services.csproj", "{1C657E9D-4DD6-42E4-A0F7-6ABA47470AA9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeautySalon.Service", "BeautySalon.Service\BeautySalon.Service.csproj", "{BAA60F90-5D0B-40DC-93F1-69545F0FF819}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeautySalon.Data", "BeautySalon.Data\BeautySalon.Data.csproj", "{F1AE5A55-FC22-40B5-8406-515F98A11808}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,18 +15,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5C9B540C-C9A7-449A-A1BB-BEADC77A97F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5C9B540C-C9A7-449A-A1BB-BEADC77A97F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5C9B540C-C9A7-449A-A1BB-BEADC77A97F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5C9B540C-C9A7-449A-A1BB-BEADC77A97F0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{55447F02-22C1-4620-B38E-62D1C1FF5D39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{55447F02-22C1-4620-B38E-62D1C1FF5D39}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{55447F02-22C1-4620-B38E-62D1C1FF5D39}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{55447F02-22C1-4620-B38E-62D1C1FF5D39}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BAA60F90-5D0B-40DC-93F1-69545F0FF819}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BAA60F90-5D0B-40DC-93F1-69545F0FF819}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BAA60F90-5D0B-40DC-93F1-69545F0FF819}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BAA60F90-5D0B-40DC-93F1-69545F0FF819}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6504F86-EB5A-4F9B-9A22-F138980642BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6504F86-EB5A-4F9B-9A22-F138980642BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6504F86-EB5A-4F9B-9A22-F138980642BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6504F86-EB5A-4F9B-9A22-F138980642BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C657E9D-4DD6-42E4-A0F7-6ABA47470AA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C657E9D-4DD6-42E4-A0F7-6ABA47470AA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C657E9D-4DD6-42E4-A0F7-6ABA47470AA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C657E9D-4DD6-42E4-A0F7-6ABA47470AA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1AE5A55-FC22-40B5-8406-515F98A11808}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1AE5A55-FC22-40B5-8406-515F98A11808}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1AE5A55-FC22-40B5-8406-515F98A11808}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1AE5A55-FC22-40B5-8406-515F98A11808}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

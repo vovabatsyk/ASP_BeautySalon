@@ -1,5 +1,6 @@
 ﻿using BeautySalon.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 
 namespace BeautySalon.Controllers
@@ -14,11 +15,6 @@ namespace BeautySalon.Controllers
         }
 
         public IActionResult Index()
-        {
-            return View();
-        }
-
-        public IActionResult Privacy()
         {
             return View();
         }
