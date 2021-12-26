@@ -12,6 +12,7 @@ namespace BeautySalon.Configuration
         {
 
             serviceCollection.AddTransient<IPostService, PostService>();
+            serviceCollection.AddTransient<IProductService, ProductService>();
 
             serviceCollection.AddDbContext<ApplicationDbContext>(options =>
               options.UseSqlServer(

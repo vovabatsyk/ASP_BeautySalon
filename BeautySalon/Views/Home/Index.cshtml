@@ -1,5 +1,7 @@
-﻿@{
+﻿@using BeautySalon.Data.Models
+@{
     ViewData["Title"] = "Euphoria";
+    @model IList<ProductModel>
 }
 
 <section class="background">
@@ -46,36 +48,15 @@
         <div class="pricingbadge">
             <h4>ВИСОКА ЯКІСТЬ, НИЗЬКІ ЦІНИ</h4>
             <ul class="pricing_menu__list">
-                <li class="pricing_menu__row">
+                @foreach (var product in Model)
+               {
+                  <li class="pricing_menu__row">
                     <div class="pricing_menu__meal">
-                        <span>Стрижка</span>
+                        <span>@product.Name</span>
                     </div>
-                    <span class="pricing_menu__price">від 60грн</span>
-                </li>
-                <li class="pricing_menu__row">
-                    <div class="pricing_menu__meal">
-                        <span>Укладка + миття</span>
-                    </div>
-                    <span class="pricing_menu__price">від 50грн</span>
-                </li>
-                <li class="pricing_menu__row">
-                    <div class="pricing_menu__meal">
-                        <span>Манікюр</span>
-                    </div>
-                    <span class="pricing_menu__price">від 40грн</span>
-                </li>
-                <li class="pricing_menu__row">
-                    <div class="pricing_menu__meal">
-                        <span>Педікюр</span>
-                    </div>
-                    <span class="pricing_menu__price">від 120грн</span>
-                </li>
-                <li class="pricing_menu__row">
-                    <div class="pricing_menu__meal">
-                        <span>Візаж</span>
-                    </div>
-                    <span class="pricing_menu__price">від 250грн</span>
-                </li>
+                    <span class="pricing_menu__price">від @product.Price грн</span>
+                </li> 
+               }
                 <a class="fullpricelist" href="#"><i class="fa fa-file-pdf-o"></i> Всі ціни та послуги</a>
             </ul>
         </div>
