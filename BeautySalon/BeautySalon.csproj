@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BeautySalon.Data\BeautySalon.Data.csproj" />
+    <ProjectReference Include="..\BeautySalon.Services\BeautySalon.Services.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,5 +1,8 @@
-﻿@{
+﻿@using BeautySalon.Data.Models
+@{
     ViewData["Title"] = "Euphoria";
+    @model IList<ProductModel>;
+    
 }
 
 <section class="background">
@@ -46,36 +49,15 @@
         <div class="pricingbadge">
             <h4>ВИСОКА ЯКІСТЬ, НИЗЬКІ ЦІНИ</h4>
             <ul class="pricing_menu__list">
-                <li class="pricing_menu__row">
+                @foreach (var product in Model)
+               {
+                  <li class="pricing_menu__row">
                     <div class="pricing_menu__meal">
-                        <span>Стрижка</span>
+                        <span>@product.Name</span>
                     </div>
-                    <span class="pricing_menu__price">від 60грн</span>
-                </li>
-                <li class="pricing_menu__row">
-                    <div class="pricing_menu__meal">
-                        <span>Укладка + миття</span>
-                    </div>
-                    <span class="pricing_menu__price">від 50грн</span>
-                </li>
-                <li class="pricing_menu__row">
-                    <div class="pricing_menu__meal">
-                        <span>Манікюр</span>
-                    </div>
-                    <span class="pricing_menu__price">від 40грн</span>
-                </li>
-                <li class="pricing_menu__row">
-                    <div class="pricing_menu__meal">
-                        <span>Педікюр</span>
-                    </div>
-                    <span class="pricing_menu__price">від 120грн</span>
-                </li>
-                <li class="pricing_menu__row">
-                    <div class="pricing_menu__meal">
-                        <span>Візаж</span>
-                    </div>
-                    <span class="pricing_menu__price">від 250грн</span>
-                </li>
+                    <span class="pricing_menu__price">від @product.Price грн</span>
+                </li> 
+               }
                 <a class="fullpricelist" href="#"><i class="fa fa-file-pdf-o"></i> Всі ціни та послуги</a>
             </ul>
         </div>
@@ -87,30 +69,15 @@
             <div class="testimonialarea-bubble">
                 <div class="testimonial-widget">
                     <h3 class="uppercase">Euphoria зробила мене красивою!</h3>
-                    <div class="testimonial">
+                    @foreach (var comment in ViewBag.Comments)
+                   {
+                       <div class="testimonial">
+                        <p>@comment.Text</p>
                         <p>
-                            "Вони подбали про моє весілля, всі питали, хто мій стиліст. Чудові ціни, чудовий персонал!"
-                        </p>
-                        <p>
-                            <strong>Тарас, Львів</strong>
-                        </p>
-                    </div>
-                    <div class="testimonial">
-                        <p>
-                            "Я є постійним клієнтом їхніх послуг, коли я завітаю до них, я стаю інша людина."
-                        </p>
-                        <p>
-                            <strong>Оксана, Львів</strong>
+                            <strong>@comment.UserName, @comment.UserCity</strong>
                         </p>
                     </div>
-                    <div class="testimonial">
-                        <p>
-                            "Щиро дякую, Euphoria, у  вас один із найкращих перукарів, я ставлю 5 <i class="fa fa-star"></i>."
-                        </p>
-                        <p>
-                            <strong>Олена, Києв</strong>
-                        </p>
-                    </div>
+                   }
                     <button class="prev-testimonial">Prev</button>
                     <button class="next-testimonial">Next</button>
                 </div>
