@@ -1,7 +1,8 @@
 ﻿@using BeautySalon.Data.Models
 @{
     ViewData["Title"] = "Euphoria";
-    @model IList<ProductModel>
+    @model IList<ProductModel>;
+    
 }
 
 <section class="background">
@@ -68,30 +69,15 @@
             <div class="testimonialarea-bubble">
                 <div class="testimonial-widget">
                     <h3 class="uppercase">Euphoria зробила мене красивою!</h3>
-                    <div class="testimonial">
+                    @foreach (var comment in ViewBag.Comments)
+                   {
+                       <div class="testimonial">
+                        <p>@comment.Text</p>
                         <p>
-                            "Вони подбали про моє весілля, всі питали, хто мій стиліст. Чудові ціни, чудовий персонал!"
-                        </p>
-                        <p>
-                            <strong>Тарас, Львів</strong>
-                        </p>
-                    </div>
-                    <div class="testimonial">
-                        <p>
-                            "Я є постійним клієнтом їхніх послуг, коли я завітаю до них, я стаю інша людина."
-                        </p>
-                        <p>
-                            <strong>Оксана, Львів</strong>
+                            <strong>@comment.UserName, @comment.UserCity</strong>
                         </p>
                     </div>
-                    <div class="testimonial">
-                        <p>
-                            "Щиро дякую, Euphoria, у  вас один із найкращих перукарів, я ставлю 5 <i class="fa fa-star"></i>."
-                        </p>
-                        <p>
-                            <strong>Олена, Києв</strong>
-                        </p>
-                    </div>
+                   }
                     <button class="prev-testimonial">Prev</button>
                     <button class="next-testimonial">Next</button>
                 </div>
