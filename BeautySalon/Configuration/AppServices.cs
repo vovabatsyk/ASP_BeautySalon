@@ -1,4 +1,5 @@
 ﻿using BeautySalon.Data;
+using BeautySalon.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -9,6 +10,9 @@ namespace BeautySalon.Configuration
     {
         public static void AddDefaultServices(this IServiceCollection serviceCollection, IConfiguration configuration)
         {
+
+            serviceCollection.AddTransient<IPostService, PostService>();
+
             serviceCollection.AddDbContext<ApplicationDbContext>(options =>
               options.UseSqlServer(
                   configuration.GetConnectionString("DefaultConnection")));
@@ -17,7 +21,6 @@ namespace BeautySalon.Configuration
             serviceCollection.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             serviceCollection.AddControllersWithViews();
-
         }
     }
 }
