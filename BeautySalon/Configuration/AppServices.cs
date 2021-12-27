@@ -1,6 +1,6 @@
 ﻿using BeautySalon.Data;
+using BeautySalon.Data.Models;
 using BeautySalon.Services;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,7 +22,7 @@ namespace BeautySalon.Configuration
                   configuration.GetConnectionString("DefaultConnection")));
             serviceCollection.AddDatabaseDeveloperPageExceptionFilter();
 
-            serviceCollection.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            serviceCollection.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             serviceCollection.AddControllersWithViews();
         }

@@ -1,0 +1,20 @@
+﻿<div class="menu-outer">
+    <div class="menu-icon">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+    <nav>
+        <ul>
+            <li><a asp-controller="Home" asp-action="Index">Головна</a></li>
+            <li><a asp-controller="Blog" asp-action="Index">Новини</a></li>
+             @await Html.PartialAsync("_LoginPartial");
+        </ul>
+    </nav>
+</div>
+<a class="menu-close" onClick="return true">
+    <div class="menu-icon">
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+</a>

@@ -15,31 +15,9 @@
 </head>
 <body class="frontpage">
 
-    <div class="menu-outer">
-        <div class="menu-icon">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-        </div>
-        <nav>
-            <ul>
-                <li><a asp-controller="Home"  asp-action="Index">Головна</a></li>
-                <li><a asp-controller="Blog"  asp-action="Index">Новини</a></li>
-                <li><a asp-controller="Admin"  asp-action="Login">Адміністратор</a></li>
-            </ul>
-        </nav>
-    </div>
-    <a class="menu-close" onClick="return true">
-        <div class="menu-icon">
-            <div class="bar"></div>
-            <div class="bar"></div>
-        </div>
-    </a>
+    @await Component.InvokeAsync("Menu");
 
-
-    <div class="fixedcallicon">
-        <i class="fa fa-phone"></i><span class="hide"><a href="tel:0677017905">0677017905</a></span>
-    </div>
+    @await Component.InvokeAsync("CallBtn");
 
     <div>
         @RenderBody()
