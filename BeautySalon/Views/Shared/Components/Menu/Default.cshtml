@@ -1,0 +1,45 @@
+﻿@using BeautySalon.Data.Models
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+
+
+<div class="menu-outer">
+    <div class="menu-icon">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+    <nav>
+        <ul>
+            <li><a asp-controller="Home" asp-action="Index">Головна</a></li>
+            <li><a asp-controller="Blog" asp-action="Index">Новини</a></li>
+
+            @if (SignInManager.IsSignedIn(User))
+            {
+                <li>
+                    <a onclick="$('#logoutForm').submit();" style="cursor: pointer">Logout</a>
+                    <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new {area = ""})"></form>
+                </li>
+                <li><a asp-controller="Admin" asp-action="Index">Admin Panel</a>  </li>
+
+                <li>
+                    <a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                        Hello @((await UserManager.GetUserAsync(User)).FirsName)!
+                    </a>
+                </li>
+            }
+            else
+            {
+                <li><a asp-area="Identity" asp-page="/Account/Login">Login</a></li>
+            }
+        </ul>
+    </nav>
+</div>
+<a class="menu-close" onClick="return true">
+    <div class="menu-icon">
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+</a>
