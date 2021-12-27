@@ -15,6 +15,8 @@ namespace BeautySalon.Configuration
             serviceCollection.AddTransient<IProductService, ProductService>();
             serviceCollection.AddTransient<ICommentService, CommentService>();
 
+            serviceCollection.AddTransient<SendEmailService>();
+
             serviceCollection.AddDbContext<ApplicationDbContext>(options =>
               options.UseSqlServer(
                   configuration.GetConnectionString("DefaultConnection")));
