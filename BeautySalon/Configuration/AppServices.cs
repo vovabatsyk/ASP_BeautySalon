@@ -22,7 +22,7 @@ namespace BeautySalon.Configuration
                   configuration.GetConnectionString("DefaultConnection")));
             serviceCollection.AddDatabaseDeveloperPageExceptionFilter();
 
-            serviceCollection.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            serviceCollection.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             serviceCollection.AddControllersWithViews();
         }

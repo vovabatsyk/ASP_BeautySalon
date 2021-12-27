@@ -4,7 +4,7 @@ namespace BeautySalon.Data.Models
 {
     public class ApplicationUser : IdentityUser
     {
-        public string Name { get; set; }
-        public string Password { get; set; }
+        public string FirsName { get; set; }
+        public string LastName { get; set; }
     }
 }
