@@ -9,7 +9,7 @@ namespace BeautySalon.Controllers
             return View();
         }
 
-        public IActionResult Login()
+        public IActionResult AddPost()
         {
             return View();
         }
