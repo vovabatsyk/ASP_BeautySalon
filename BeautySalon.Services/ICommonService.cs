@@ -6,7 +6,7 @@ namespace BeautySalon.Services
     {
         public IList<T> GetAllModels();
         public T GetModelById(string id);
-        public T CreateOrUpdateModel(T post);
+        public void CreateOrUpdateModel(T post);
         public bool DeleteModel(T post);
     }
 }
