@@ -44,7 +44,7 @@ namespace BeautySalon.Services
             };
         }
 
-        public CommentModel CreateOrUpdateModel(CommentModel post)
+        public void CreateOrUpdateModel(CommentModel post)
         {
             throw new NotImplementedException();
         }
