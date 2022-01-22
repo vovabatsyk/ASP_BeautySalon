@@ -6,6 +6,12 @@ namespace BeautySalon.Services
     public class PostService : IPostService
     {
         private IList<PostModel> _posts;
+        //private readonly ApplicationDbContext _dbContext;
+
+        //public PostService(ApplicationDbContext dbContext)
+        //{
+        //    _dbContext = dbContext;
+        //}
 
         public PostService()
         {
@@ -47,6 +53,7 @@ namespace BeautySalon.Services
 
         public IList<PostModel> GetAllModels()
         {
+            //return _dbContext.PostModels.ToList();
             return _posts;
         }
 
@@ -57,7 +64,9 @@ namespace BeautySalon.Services
 
         public void CreateOrUpdateModel(PostModel post)
         {
-            this._posts.Add(post);
+            //_dbContext.PostModels.Add(post);
+            //_dbContext.SaveChanges();
+            _posts.Add(post);
         }
 
         public bool DeleteModel(PostModel post)

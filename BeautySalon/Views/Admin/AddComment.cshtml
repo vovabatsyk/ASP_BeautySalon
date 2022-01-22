@@ -1,0 +1,32 @@
+﻿@using BeautySalon.Data.Models
+@model CommentModel
+
+<form method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="Title"></label>
+        <input asp-for="Title" type="text" class="form-control">
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Text"></label>
+        <textarea asp-for="Text" class="form-control" rows="3"></textarea>
+        <span asp-validation-for="Text" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="UserName"></label>
+        <input asp-for="UserName" type="text" class="form-control">
+        <span asp-validation-for="UserName" class="text-danger"></span>
+    </div>
+        <div class="form-group">
+        <label asp-for="UserCity"></label>
+        <input asp-for="UserCity" type="text" class="form-control">
+        <span asp-validation-for="UserCity" class="text-danger"></span>
+    </div>
+    <div class="form-group form-check">
+        <input asp-for="IsPositive" type="checkbox" class="form-check-input">
+        <label class="form-check-label" asp-for="IsPositive"></label>
+    </div>
+    <button type="submit" class="btn btn-primary">Додати</button>
+    <a asp-controller="Admin" asp-action="Comments" class="btn btn-secondary m3">Назад до списку</a>
+</form>
