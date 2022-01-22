@@ -36,9 +36,9 @@
                         Послуги
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Додати</a>
+                        <a class="dropdown-item" asp-controller="Admin" asp-action="AddProduct">Додати</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Всі послуги</a>
+                        <a class="dropdown-item" asp-controller="Admin" asp-action="Products">Всі послуги</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -46,13 +46,13 @@
                         Відгуки
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Додати</a>
+                        <a class="dropdown-item" asp-controller="Admin" asp-action="AddComment">Додати</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Всі відгуки</a>
+                        <a class="dropdown-item" asp-controller="Admin" asp-action="Comments">Всі відгуки</a>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link">Вийти</a>
+                    <a class="nav-link" asp-controller="Home" asp-action="Index">Вийти</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">

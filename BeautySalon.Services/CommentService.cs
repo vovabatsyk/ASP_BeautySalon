@@ -44,9 +44,9 @@ namespace BeautySalon.Services
             };
         }
 
-        public void CreateOrUpdateModel(CommentModel post)
+        public void CreateOrUpdateModel(CommentModel comment)
         {
-            throw new NotImplementedException();
+            _comments.Add(comment);
         }
 
         public bool DeleteModel(CommentModel post)

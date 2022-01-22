@@ -1,19 +1,17 @@
-﻿using BeautySalon.Data;
-using BeautySalon.Models;
+﻿using BeautySalon.Models;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace BeautySalon.Services
 {
     public class PostService : IPostService
     {
         private IList<PostModel> _posts;
-        private readonly ApplicationDbContext _dbContext;
+        //private readonly ApplicationDbContext _dbContext;
 
-        public PostService(ApplicationDbContext dbContext)
-        {
-            _dbContext = dbContext;
-        }
+        //public PostService(ApplicationDbContext dbContext)
+        //{
+        //    _dbContext = dbContext;
+        //}
 
         public PostService()
         {
@@ -55,7 +53,8 @@ namespace BeautySalon.Services
 
         public IList<PostModel> GetAllModels()
         {
-            return _dbContext.PostModels.ToList();
+            //return _dbContext.PostModels.ToList();
+            return _posts;
         }
 
         public PostModel GetModelById(string id)
@@ -65,8 +64,9 @@ namespace BeautySalon.Services
 
         public void CreateOrUpdateModel(PostModel post)
         {
-            _dbContext.PostModels.Add(post);
-            _dbContext.SaveChanges();
+            //_dbContext.PostModels.Add(post);
+            //_dbContext.SaveChanges();
+            _posts.Add(post);
         }
 
         public bool DeleteModel(PostModel post)
