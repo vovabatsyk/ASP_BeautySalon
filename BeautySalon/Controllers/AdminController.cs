@@ -8,7 +8,6 @@ namespace BeautySalon.Controllers
     {
         private readonly IPostService _postService;
 
-
         public AdminController(IPostService postService)
         {
             _postService = postService;
