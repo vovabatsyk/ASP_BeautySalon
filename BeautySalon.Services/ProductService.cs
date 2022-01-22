@@ -52,9 +52,9 @@ namespace BeautySalon.Services
         {
             return _products.Where(p => p.IsDiscount == true).ToList();
         }
-        public ProductModel CreateOrUpdateModel(ProductModel post)
+        public void CreateOrUpdateModel(ProductModel product)
         {
-            throw new NotImplementedException();
+            this._products.Add(product);
         }
 
         public bool DeleteModel(ProductModel post)
