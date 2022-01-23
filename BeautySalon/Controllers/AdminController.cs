@@ -52,7 +52,7 @@ namespace BeautySalon.Controllers
             if (ModelState.IsValid)
             {
                 _postService.CreateModel(obj);
-                TempData["success"] = $"Новина додана успішно!";
+                TempData["success"] = "Новина додана успішно!";
                 return RedirectToAction("Index");
             }
 

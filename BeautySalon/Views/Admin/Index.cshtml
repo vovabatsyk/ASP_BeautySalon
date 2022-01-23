@@ -1,11 +1,13 @@
-﻿@model IList<PostModel>;
+﻿@model IEnumerable<PostModel>;
 
 <h1 class="text-center pt-4">Новини</h1>
 <table class="table">
     <thead class="thead-light">
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Заголовок</th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
             <th scope="col"></th>
             <th scope="col"></th>
         </tr>
@@ -15,7 +17,7 @@
         {
             <tr>
                 <th scope="row">@post.Id</th>
-                <td  width="70%">@post.Title</td>
+                <td width="70%">@post.Title</td>
                 <td><input type="checkbox" class=" m-3" checked="@post.IsShow" disabled></td>
                 <td>
                     <a class="btn btn-warning action mb-2" asp-controller="Admin" asp-action="EditPost" asp-route-id="@post.Id">

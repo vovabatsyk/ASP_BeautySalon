@@ -83,7 +83,7 @@
                 </div>
             </div>
             <div class="contactform-bubble">
-                <form autocomplete="off" class="contactform" asp-action="SendMessage">
+                <form autocomplete="off" class="contactform" method="post" asp-action="SendMessage">
                     <input asp-for="Name" type="text" placeholder="Імя" />
                     <span asp-validation-for="Name" class="text-danger"></span>
 
@@ -94,7 +94,7 @@
                     <span asp-validation-for="Text" class="text-danger"></span>
 
                     <input type="submit" value="Відправити" class="btnsend" />
-                    
+
                 </form>
             </div>
             <div class="contactaddress-bubble">
