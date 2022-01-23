@@ -17,9 +17,16 @@
         {
             <tr>
                 <th scope="row">@comment.Id</th>
-                <td>@comment.Title</td>
+                <td width="50%">@comment.Title</td>
                 <td>@comment.UserName</td>
-                <td><button class="btn btn-warning m-2"><i class="fa fa-edit"></i></button><button class="btn btn-danger m-2"><i class="fa fa-trash"></i></button> </td>
+                <td>
+                    <a class="btn btn-warning m-2" asp-controller="Admin" asp-action="EditComment" asp-route-id="@comment.Id">
+                        <i class="fa fa-edit"></i>
+                    </a>
+                    <a class="btn btn-danger m-2">
+                        <i class="fa fa-trash"></i>
+                    </a>
+                </td>
             </tr>
         }
     </tbody>

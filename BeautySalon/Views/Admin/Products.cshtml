@@ -13,13 +13,20 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var post in @Model)
+        @foreach (var product in @Model)
         {
             <tr>
-                <th scope="row">@post.Id</th>
-                <td>@post.Name</td>
-                <td>@post.Price</td>
-                <td><button class="btn btn-warning m-2"><i class="fa fa-edit"></i></button><button class="btn btn-danger m-2"><i class="fa fa-trash"></i></button> </td>
+                <th scope="row">@product.Id</th>
+                <td>@product.Name</td>
+                <td>@product.Price</td>
+                <td>
+                    <a class="btn btn-warning m-2" asp-controller="Admin" asp-action="EditProduct" asp-route-id="@product.Id">
+                        <i class="fa fa-edit"></i>
+                    </a>
+                    <a class="btn btn-danger m-2">
+                        <i class="fa fa-trash"></i>
+                    </a>
+                </td>
             </tr>
         }
     </tbody>

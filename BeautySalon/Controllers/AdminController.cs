@@ -46,7 +46,41 @@ namespace BeautySalon.Controllers
 
             if (ModelState.IsValid)
             {
-                _postService.CreateOrUpdateModel(obj);
+                _postService.CreateModel(obj);
+                return RedirectToAction("Index");
+            }
+
+            return View(obj);
+        }
+
+        public IActionResult EditPost(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var model = _postService.GetModelById((int)id);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult EditPost(PostModel obj)
+        {
+            if (string.IsNullOrWhiteSpace(obj.Title))
+            {
+                ModelState.AddModelError("Title", "Заголовок є обовязковим полем!");
+            }
+
+            if (string.IsNullOrWhiteSpace(obj.Description))
+            {
+                ModelState.AddModelError("Description", "Опис є обовязковим полем!");
+            }
+
+            if (ModelState.IsValid)
+            {
+                _postService.UpdateModel(obj);
                 return RedirectToAction("Index");
             }
 
@@ -79,7 +113,36 @@ namespace BeautySalon.Controllers
 
             if (ModelState.IsValid)
             {
-                _productService.CreateOrUpdateModel(obj);
+                _productService.CreateModel(obj);
+                return RedirectToAction("Products");
+            }
+
+            return View(obj);
+        }
+
+        public IActionResult EditProduct(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var model = _productService.GetModelById((int)id);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult EditProduct(ProductModel obj)
+        {
+            if (string.IsNullOrWhiteSpace(obj.Name))
+            {
+                ModelState.AddModelError("Name", "Назва є обовязковим полем!");
+            }
+
+            if (ModelState.IsValid)
+            {
+                _productService.UpdateModel(obj);
                 return RedirectToAction("Products");
             }
 
@@ -106,13 +169,36 @@ namespace BeautySalon.Controllers
         {
             if (ModelState.IsValid)
             {
-                _commentService.CreateOrUpdateModel(obj);
+                _commentService.CreateModel(obj);
                 return RedirectToAction("Comments");
             }
 
             return View(obj);
         }
 
+        public IActionResult EditComment(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var model = _commentService.GetModelById((int)id);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult EditComment(CommentModel obj)
+        {
+            if (ModelState.IsValid)
+            {
+                _commentService.UpdateModel(obj);
+                return RedirectToAction("Comments");
+            }
+
+            return View(obj);
+        }
         #endregion
     }
 }
