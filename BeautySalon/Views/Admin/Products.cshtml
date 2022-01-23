@@ -2,24 +2,32 @@
 @model IList<ProductModel>
 
 <h1 class="text-center pt-4">Послуги</h1>
-
 <table class="table">
-    <thead class="thead-dark">
+    <thead class="thead-light">
         <tr>
             <th scope="col">#</th>
             <th scope="col">Назва</th>
             <th scope="col">Ціна</th>
-            <th scope="col" class="action">Дія</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var post in @Model)
+        @foreach (var product in @Model)
         {
             <tr>
-                <th scope="row">@post.Id</th>
-                <td>@post.Name</td>
-                <td>@post.Price</td>
-                <td><button class="btn btn-warning m-2"><i class="fa fa-edit"></i></button><button class="btn btn-danger m-2"><i class="fa fa-trash"></i></button> </td>
+                <th scope="row">@product.Id</th>
+                <td>@product.Name</td>
+                <td>@product.Price</td>
+                <td><input type="checkbox" class=" m-3" checked="@product.IsDiscount" disabled></td>
+                <td>
+                    <a class="btn btn-warning action mb-2" asp-controller="Admin" asp-action="EditProduct" asp-route-id="@product.Id">
+                        <i class="fa fa-edit"></i>
+                    </a>
+                    <a class="btn btn-danger action mb-2" asp-controller="Admin" asp-action="DeleteProduct" asp-route-id="@product.Id">
+                        <i class="fa fa-trash"></i>
+                    </a>
+                </td>
             </tr>
         }
     </tbody>

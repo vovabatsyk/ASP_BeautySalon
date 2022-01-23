@@ -7,10 +7,9 @@ namespace BeautySalon.Data.Models
         [Key]
         public int Id { get; set; }
 
-        [Display(Name = "Назва")]
+        [Display(Name = "Назва*")]
         public string Name { get; set; }
 
-        [Required]
         [Display(Name = "Ціна")]
         public decimal Price { get; set; }
 

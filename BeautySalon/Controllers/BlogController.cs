@@ -12,7 +12,7 @@ namespace BeautySalon.Controllers
         }
         public IActionResult Index()
         {
-            var model = _service.GetAllModels();
+            var model = _service.ShowPosts();
             return View(model);
         }
     }

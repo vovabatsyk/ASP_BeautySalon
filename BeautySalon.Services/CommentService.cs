@@ -1,5 +1,4 @@
 ﻿using BeautySalon.Data.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -44,14 +43,21 @@ namespace BeautySalon.Services
             };
         }
 
-        public void CreateOrUpdateModel(CommentModel comment)
+        public void CreateModel(CommentModel comment)
         {
             _comments.Add(comment);
         }
 
-        public bool DeleteModel(CommentModel post)
+        public bool DeleteModel(CommentModel comment)
         {
-            throw new NotImplementedException();
+            var deletedcomment = _comments.FirstOrDefault(p => p.Id == comment.Id);
+            if (deletedcomment == null)
+            {
+                return false;
+            }
+
+            _comments.Remove(deletedcomment);
+            return true;
         }
 
         public IList<CommentModel> GetAllModels()
@@ -59,14 +65,31 @@ namespace BeautySalon.Services
             return _comments;
         }
 
-        public CommentModel GetModelById(string id)
+        public CommentModel GetModelById(int id)
         {
-            throw new NotImplementedException();
+            var item = _comments.FirstOrDefault(i => i.Id == id);
+
+            return item;
         }
 
         public IList<CommentModel> GetPositiveComments()
         {
             return _comments.Where(c => c.IsPositive == true).ToList();
+        }
+
+        public CommentModel UpdateModel(CommentModel obj)
+        {
+            var updatedItem = _comments.FirstOrDefault(i => i.Id == obj.Id);
+            _comments.Where(i => i.Id == obj.Id).Select(c =>
+            {
+                c.Title = obj.Title;
+                c.Text = obj.Text;
+                c.UserName = obj.UserName;
+                c.UserCity = obj.UserCity;
+                c.IsPositive = obj.IsPositive;
+                return c;
+            }).ToList();
+            return updatedItem;
         }
     }
 }

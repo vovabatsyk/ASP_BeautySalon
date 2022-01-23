@@ -28,7 +28,7 @@ namespace BeautySalon.Controllers
         public IActionResult Index()
         {
             ViewBag.Comments = _commentService.GetPositiveComments();
-            ViewBag.Products = _productService.GetDiscountProducts();
+            ViewBag.Products = _productService.ShowProducts();
             return View();
         }
 
