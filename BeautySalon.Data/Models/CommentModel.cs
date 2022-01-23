@@ -7,20 +7,16 @@ namespace BeautySalon.Data.Models
         [Key]
         public int Id { get; set; }
 
-        [Required]
-        [Display(Name = "Заголовок")]
+        [Display(Name = "Заголовок*")]
         public string Title { get; set; }
 
-        [Required]
-        [Display(Name = "Текст")]
+        [Display(Name = "Текст*")]
         public string Text { get; set; }
 
-        [Required]
-        [Display(Name = "Імя")]
+        [Display(Name = "Імя*")]
         public string UserName { get; set; }
 
-        [Required]
-        [Display(Name = "Місто")]
+        [Display(Name = "Місто*")]
         public string UserCity { get; set; }
 
         [Display(Name = "Позитивний?")]

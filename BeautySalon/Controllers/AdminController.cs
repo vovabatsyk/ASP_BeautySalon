@@ -44,6 +44,11 @@ namespace BeautySalon.Controllers
                 ModelState.AddModelError("Description", "Опис є обовязковим полем!");
             }
 
+            if (string.IsNullOrWhiteSpace(obj.Link))
+            {
+                ModelState.AddModelError("Link", "Посилання є обовязковим полем!");
+            }
+
             if (ModelState.IsValid)
             {
                 _postService.CreateModel(obj);
@@ -235,10 +240,26 @@ namespace BeautySalon.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult AddComment(CommentModel obj)
         {
+            if (string.IsNullOrWhiteSpace(obj.Title))
+            {
+                ModelState.AddModelError("Title", "Заголовок є обовязковим полем!");
+            }
+            if (string.IsNullOrWhiteSpace(obj.Text))
+            {
+                ModelState.AddModelError("Text", "Текст є обовязковим полем!");
+            }
+            if (string.IsNullOrWhiteSpace(obj.UserName))
+            {
+                ModelState.AddModelError("UserName", "Імя є обовязковим полем!");
+            }
+            if (string.IsNullOrWhiteSpace(obj.UserCity))
+            {
+                ModelState.AddModelError("UserCity", "Місто є обовязковим полем!");
+            }
             if (ModelState.IsValid)
             {
                 _commentService.CreateModel(obj);
-                TempData["success"] = $"Коментарій доданий успішно!";
+                TempData["success"] = $"Відгук доданий успішно!";
                 return RedirectToAction("Comments");
             }
 
@@ -260,10 +281,26 @@ namespace BeautySalon.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult EditComment(CommentModel obj)
         {
+            if (string.IsNullOrWhiteSpace(obj.Title))
+            {
+                ModelState.AddModelError("Title", "Заголовок є обовязковим полем!");
+            }
+            if (string.IsNullOrWhiteSpace(obj.Text))
+            {
+                ModelState.AddModelError("Text", "Текст є обовязковим полем!");
+            }
+            if (string.IsNullOrWhiteSpace(obj.UserName))
+            {
+                ModelState.AddModelError("UserName", "Імя є обовязковим полем!");
+            }
+            if (string.IsNullOrWhiteSpace(obj.UserCity))
+            {
+                ModelState.AddModelError("UserCity", "Місто є обовязковим полем!");
+            }
             if (ModelState.IsValid)
             {
                 _commentService.UpdateModel(obj);
-                TempData["success"] = $"Коментарій оновлено успішно!";
+                TempData["success"] = $"Відгук оновлено успішно!";
                 return RedirectToAction("Comments");
             }
 
@@ -297,7 +334,7 @@ namespace BeautySalon.Controllers
             else
             {
                 _commentService.DeleteModel(obj);
-                TempData["success"] = $"Коментарій видалено успішно!";
+                TempData["success"] = $"Відгук видалено успішно!";
                 return RedirectToAction("Comments");
             }
         }

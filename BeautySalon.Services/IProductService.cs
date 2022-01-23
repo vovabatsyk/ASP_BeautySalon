@@ -5,6 +5,6 @@ namespace BeautySalon.Services
 {
     public interface IProductService : ICommonService<ProductModel>
     {
-        public IList<ProductModel> GetDiscountProducts();
+        public IList<ProductModel> ShowProducts();
     }
 }

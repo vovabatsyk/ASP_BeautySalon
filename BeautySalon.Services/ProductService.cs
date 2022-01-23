@@ -47,7 +47,7 @@ namespace BeautySalon.Services
             return _products;
         }
 
-        public IList<ProductModel> GetDiscountProducts()
+        public IList<ProductModel> ShowProducts()
         {
             return _products.Where(p => p.IsDiscount == true).ToList();
         }
