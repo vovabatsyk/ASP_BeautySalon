@@ -1,7 +1,6 @@
 ﻿<link rel="stylesheet" href="~/css/admin.css" asp-append-version="true" />
     @model IList<PostModel>;
 
-
 <h1 class="text-center pt-4">Новини</h1>
 
 <table class="table">
@@ -22,7 +21,7 @@
                     <a class="btn btn-warning m-2" asp-controller="Admin" asp-action="EditPost" asp-route-id="@post.Id">
                         <i class="fa fa-edit"></i>
                     </a>
-                    <a class="btn btn-danger m-2">
+                    <a class="btn btn-danger m-2" asp-controller="Admin" asp-action="DeletePost" asp-route-id="@post.Id">
                         <i class="fa fa-trash"></i>
                     </a>
                 </td>

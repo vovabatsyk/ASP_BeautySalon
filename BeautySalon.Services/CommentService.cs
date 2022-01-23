@@ -1,5 +1,4 @@
 ﻿using BeautySalon.Data.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -49,9 +48,16 @@ namespace BeautySalon.Services
             _comments.Add(comment);
         }
 
-        public bool DeleteModel(CommentModel post)
+        public bool DeleteModel(CommentModel comment)
         {
-            throw new NotImplementedException();
+            var deletedcomment = _comments.FirstOrDefault(p => p.Id == comment.Id);
+            if (deletedcomment == null)
+            {
+                return false;
+            }
+
+            _comments.Remove(deletedcomment);
+            return true;
         }
 
         public IList<CommentModel> GetAllModels()
