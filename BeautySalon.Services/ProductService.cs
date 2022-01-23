@@ -1,5 +1,4 @@
 ﻿using BeautySalon.Data.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -57,9 +56,16 @@ namespace BeautySalon.Services
             this._products.Add(product);
         }
 
-        public bool DeleteModel(ProductModel post)
+        public bool DeleteModel(ProductModel product)
         {
-            throw new NotImplementedException();
+            var deletedProduct = _products.FirstOrDefault(p => p.Id == product.Id);
+            if (deletedProduct == null)
+            {
+                return false;
+            }
+
+            _products.Remove(deletedProduct);
+            return true;
         }
 
         public ProductModel GetModelById(int id)

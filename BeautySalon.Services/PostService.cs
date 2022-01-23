@@ -76,7 +76,14 @@ namespace BeautySalon.Services
 
         public bool DeleteModel(PostModel post)
         {
-            throw new System.NotImplementedException();
+            var deletedPost = _posts.FirstOrDefault(p => p.Id == post.Id);
+            if (deletedPost == null)
+            {
+                return false;
+            }
+
+            _posts.Remove(deletedPost);
+            return true;
         }
 
         public PostModel UpdateModel(PostModel obj)

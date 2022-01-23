@@ -87,6 +87,37 @@ namespace BeautySalon.Controllers
             return View(obj);
         }
 
+        public IActionResult DeletePost(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var model = _postService.GetModelById((int)id);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeletePost(PostModel obj)
+        {
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            var post = _postService.GetModelById(obj.Id);
+            if (post == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                _postService.DeleteModel(obj);
+                return RedirectToAction("Index");
+            }
+        }
+
         #endregion
 
         #region Products
@@ -149,6 +180,37 @@ namespace BeautySalon.Controllers
             return View(obj);
         }
 
+        public IActionResult DeleteProduct(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var model = _productService.GetModelById((int)id);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteProduct(ProductModel obj)
+        {
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            var product = _productService.GetModelById(obj.Id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                _productService.DeleteModel(obj);
+                return RedirectToAction("Products");
+            }
+        }
+
         #endregion
 
         #region Comments
@@ -198,6 +260,37 @@ namespace BeautySalon.Controllers
             }
 
             return View(obj);
+        }
+
+        public IActionResult DeleteComment(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var model = _commentService.GetModelById((int)id);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteComment(CommentModel obj)
+        {
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            var comment = _commentService.GetModelById(obj.Id);
+            if (comment == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                _commentService.DeleteModel(obj);
+                return RedirectToAction("Index");
+            }
         }
         #endregion
     }
