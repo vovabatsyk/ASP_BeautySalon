@@ -1,15 +1,15 @@
 ﻿@using BeautySalon.Data.Models
 @model IList<CommentModel>
 
-<h1 class="text-center pt-4">Послуги</h1>
-
+<h1 class="text-center pt-4">Відгуки</h1>
 <table class="table">
-    <thead class="thead-dark">
+    <thead class="thead-light">
         <tr>
             <th scope="col">#</th>
             <th scope="col">Заголовок</th>
             <th scope="col">Імя</th>
-            <th scope="col" class="action">Дія</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
         </tr>
     </thead>
     <tbody>
@@ -17,9 +17,17 @@
         {
             <tr>
                 <th scope="row">@comment.Id</th>
-                <td>@comment.Title</td>
+                <td width="50%">@comment.Title</td>
                 <td>@comment.UserName</td>
-                <td><button class="btn btn-warning m-2"><i class="fa fa-edit"></i></button><button class="btn btn-danger m-2"><i class="fa fa-trash"></i></button> </td>
+                <td><input type="checkbox" class=" m-3" checked="@comment.IsPositive" disabled></td>
+                <td>
+                    <a class="btn btn-warning action mb-2" asp-controller="Admin" asp-action="EditComment" asp-route-id="@comment.Id">
+                        <i class="fa fa-edit"></i>
+                    </a>
+                    <a class="btn btn-danger action mb-2" asp-controller="Admin" asp-action="DeleteComment" asp-route-id="@comment.Id">
+                        <i class="fa fa-trash"></i>
+                    </a>
+                </td>
             </tr>
         }
     </tbody>

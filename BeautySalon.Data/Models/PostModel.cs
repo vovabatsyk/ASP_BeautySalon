@@ -7,13 +7,13 @@ namespace BeautySalon.Models
         [Key]
         public int Id { get; set; }
 
-        [Display(Name = "Заголовок")]
+        [Display(Name = "Заголовок*")]
         public string Title { get; set; }
 
-        [Display(Name = "Опис")]
+        [Display(Name = "Опис*")]
         public string Description { get; set; }
 
-        [Display(Name = "Посилання")]
+        [Display(Name = "Посилання*")]
         public string Link { get; set; }
 
         [Display(Name = "Показати?")]
