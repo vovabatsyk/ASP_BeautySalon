@@ -52,7 +52,7 @@ namespace BeautySalon.Services
         {
             return _products.Where(p => p.IsDiscount == true).ToList();
         }
-        public void CreateOrUpdateModel(ProductModel product)
+        public void CreateModel(ProductModel product)
         {
             this._products.Add(product);
         }
@@ -62,9 +62,24 @@ namespace BeautySalon.Services
             throw new NotImplementedException();
         }
 
-        public ProductModel GetModelById(string id)
+        public ProductModel GetModelById(int id)
         {
-            throw new NotImplementedException();
+            var item = _products.FirstOrDefault(i => i.Id == id);
+
+            return item;
+        }
+
+        public ProductModel UpdateModel(ProductModel obj)
+        {
+            var updatedItem = _products.FirstOrDefault(i => i.Id == obj.Id);
+            _products.Where(i => i.Id == obj.Id).Select(c =>
+            {
+                c.Name = obj.Name;
+                c.Price = obj.Price;
+                c.IsDiscount = obj.IsDiscount;
+                return c;
+            }).ToList();
+            return updatedItem;
         }
     }
 }
