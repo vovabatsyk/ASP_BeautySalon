@@ -47,6 +47,7 @@ namespace BeautySalon.Controllers
             if (ModelState.IsValid)
             {
                 _postService.CreateModel(obj);
+                TempData["success"] = $"Новина додана успішно!";
                 return RedirectToAction("Index");
             }
 
@@ -81,6 +82,7 @@ namespace BeautySalon.Controllers
             if (ModelState.IsValid)
             {
                 _postService.UpdateModel(obj);
+                TempData["success"] = $"Новину оновлено успішно!";
                 return RedirectToAction("Index");
             }
 
@@ -114,6 +116,7 @@ namespace BeautySalon.Controllers
             else
             {
                 _postService.DeleteModel(obj);
+                TempData["success"] = $"Новина видалена успішно!";
                 return RedirectToAction("Index");
             }
         }
@@ -145,6 +148,7 @@ namespace BeautySalon.Controllers
             if (ModelState.IsValid)
             {
                 _productService.CreateModel(obj);
+                TempData["success"] = $"Послуга додана успішно!";
                 return RedirectToAction("Products");
             }
 
@@ -174,6 +178,7 @@ namespace BeautySalon.Controllers
             if (ModelState.IsValid)
             {
                 _productService.UpdateModel(obj);
+                TempData["success"] = $"Послугу оновлено успішно!";
                 return RedirectToAction("Products");
             }
 
@@ -207,6 +212,7 @@ namespace BeautySalon.Controllers
             else
             {
                 _productService.DeleteModel(obj);
+                TempData["success"] = $"Послуга видалена успішно!";
                 return RedirectToAction("Products");
             }
         }
@@ -232,6 +238,7 @@ namespace BeautySalon.Controllers
             if (ModelState.IsValid)
             {
                 _commentService.CreateModel(obj);
+                TempData["success"] = $"Коментарій доданий успішно!";
                 return RedirectToAction("Comments");
             }
 
@@ -256,6 +263,7 @@ namespace BeautySalon.Controllers
             if (ModelState.IsValid)
             {
                 _commentService.UpdateModel(obj);
+                TempData["success"] = $"Коментарій оновлено успішно!";
                 return RedirectToAction("Comments");
             }
 
@@ -289,7 +297,8 @@ namespace BeautySalon.Controllers
             else
             {
                 _commentService.DeleteModel(obj);
-                return RedirectToAction("Index");
+                TempData["success"] = $"Коментарій видалено успішно!";
+                return RedirectToAction("Comments");
             }
         }
         #endregion
