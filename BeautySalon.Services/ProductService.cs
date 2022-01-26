@@ -1,4 +1,5 @@
-﻿using BeautySalon.Data.Models;
+﻿using BeautySalon.Data;
+using BeautySalon.Data.Models;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -6,86 +7,45 @@ namespace BeautySalon.Services
 {
     public class ProductService : IProductService
     {
-        private IList<ProductModel> _products;
-        public ProductService()
-        {
-            _products = new List<ProductModel>
-            {
-                new ProductModel
-                {
-                    Id = 1,
-                    Name = "Test",
-                    Price = 100,
-                    IsDiscount = false
-                },
-                new ProductModel
-                {
-                    Id = 2,
-                    Name = "Укладка",
-                    Price = 50,
-                    IsDiscount = true
-                },
-                new ProductModel
-                {
-                    Id = 3,
-                    Name = "Педікюр",
-                    Price = 120,
-                    IsDiscount = true
-                },
-                new ProductModel
-                {
-                    Id = 4,
-                    Name = "Візаж",
-                    Price = 250,
-                    IsDiscount = true
-                }
-            };
-        }
+        private readonly ApplicationDbContext _dbContext;
 
+        public ProductService(ApplicationDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
         public IList<ProductModel> GetAllModels()
         {
-            return _products;
+            return _dbContext.ProductModels.ToList();
         }
 
         public IList<ProductModel> ShowProducts()
         {
-            return _products.Where(p => p.IsDiscount == true).ToList();
+            return _dbContext.ProductModels.Where(p => p.IsDiscount == true).ToList();
         }
-        public void CreateModel(ProductModel product)
+        public void CreateModel(ProductModel model)
         {
-            this._products.Add(product);
+            _dbContext.ProductModels.Add(model);
+            _dbContext.SaveChanges();
         }
 
-        public bool DeleteModel(ProductModel product)
+        public bool DeleteModel(ProductModel odj)
         {
-            var deletedProduct = _products.FirstOrDefault(p => p.Id == product.Id);
-            if (deletedProduct == null)
-            {
-                return false;
-            }
-
-            _products.Remove(deletedProduct);
+            var model = _dbContext.ProductModels.Find(odj.Id);
+            _dbContext.ProductModels.Remove(model);
+            _dbContext.SaveChanges();
             return true;
         }
 
         public ProductModel GetModelById(int id)
         {
-            var item = _products.FirstOrDefault(i => i.Id == id);
+            return _dbContext.ProductModels.FirstOrDefault(model => model.Id == id);
 
-            return item;
         }
 
-        public ProductModel UpdateModel(ProductModel obj)
+        public void UpdateModel(ProductModel obj)
         {
-            var updatedItem = _products.FirstOrDefault(i => i.Id == obj.Id);
-            _products.Where(i => i.Id == obj.Id).Select(c =>
-            {
-                c.Name = obj.Name;
-                c.Price = obj.Price;
-                c.IsDiscount = obj.IsDiscount;
-                return c;
-            }).ToList();
-            return updatedItem;
+            _dbContext.ProductModels.Update(obj);
+            _dbContext.SaveChanges();
         }
     }
 }
