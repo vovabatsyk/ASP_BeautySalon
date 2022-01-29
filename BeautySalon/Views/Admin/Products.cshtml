@@ -1,13 +1,17 @@
 ﻿@using BeautySalon.Data.Models
-@model IList<ProductModel>
+@model IEnumerable<ProductModel>
 
 <h1 class="text-center pt-4">Послуги</h1>
 <table class="table">
     <thead class="thead-light">
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Назва</th>
-            <th scope="col">Ціна</th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
             <th scope="col"></th>
             <th scope="col"></th>
         </tr>

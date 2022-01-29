@@ -11,9 +11,9 @@ namespace BeautySalon.Data.Models
         public string Name { get; set; }
 
         [Display(Name = "Ціна")]
-        public decimal Price { get; set; }
+        public int Price { get; set; }
 
-        [Display(Name = "Знижка?")]
+        [Display(Name = "Показати?")]
         public bool IsDiscount { get; set; }
     }
 }

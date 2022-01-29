@@ -96,6 +96,7 @@ namespace BeautySalon.Areas.Identity.Pages.Account
                 }
                 else
                 {
+                    TempData["error"] = "Не правильні дані!";
                     ModelState.AddModelError(string.Empty, "Invalid login attempt.");
                     return Page();
                 }

@@ -1,13 +1,17 @@
-﻿@using BeautySalon.Data.Models
-@model IList<CommentModel>
+﻿@model IEnumerable<BeautySalon.Data.Models.CommentModel>
+
 
 <h1 class="text-center pt-4">Відгуки</h1>
 <table class="table">
     <thead class="thead-light">
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Заголовок</th>
-            <th scope="col">Імя</th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
             <th scope="col"></th>
             <th scope="col"></th>
         </tr>
