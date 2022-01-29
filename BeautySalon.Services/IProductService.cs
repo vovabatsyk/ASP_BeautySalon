@@ -6,5 +6,6 @@ namespace BeautySalon.Services
     public interface IProductService : ICommonService<ProductModel>
     {
         public IList<ProductModel> ShowProducts();
+        public bool LimitShowProduct(int count);
     }
 }

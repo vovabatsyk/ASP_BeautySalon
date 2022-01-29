@@ -47,5 +47,12 @@ namespace BeautySalon.Services
             _dbContext.ProductModels.Update(obj);
             _dbContext.SaveChanges();
         }
+
+        public bool LimitShowProduct(int count)
+        {
+            var modelsLength = _dbContext.ProductModels.Where(p => p.IsDiscount == true).ToList().Count;
+            if (modelsLength >= count) return false;
+            return true;
+        }
     }
 }

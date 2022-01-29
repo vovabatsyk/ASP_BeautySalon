@@ -179,9 +179,17 @@ namespace BeautySalon.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult AddProduct(ProductModel obj)
         {
+            var limit = 5;
+
             if (string.IsNullOrWhiteSpace(obj.Name))
             {
                 ModelState.AddModelError("Name", "Назва є обовязковим полем!");
+            }
+
+            if (!_productService.LimitShowProduct(limit))
+            {
+                TempData["error"] = $"Можна показати максимум {limit} послуг";
+                return RedirectToAction("Products");
             }
 
             if (ModelState.IsValid)
@@ -213,9 +221,16 @@ namespace BeautySalon.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult EditProduct(ProductModel obj)
         {
+            var limit = 5;
             if (string.IsNullOrWhiteSpace(obj.Name))
             {
                 ModelState.AddModelError("Name", "Назва є обовязковим полем!");
+            }
+
+            if (!_productService.LimitShowProduct(limit))
+            {
+                TempData["error"] = $"Можна показати максимум {limit} послуг";
+                return RedirectToAction("Products");
             }
 
             if (ModelState.IsValid)
