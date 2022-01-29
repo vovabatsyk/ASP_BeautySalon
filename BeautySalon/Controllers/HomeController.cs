@@ -32,12 +32,15 @@ namespace BeautySalon.Controllers
             return View();
         }
 
-        public async Task<IActionResult> SendMessage([FromForm] SendMailModel userInfo)
+        public async Task<IActionResult> SendMessage(SendMailModel userInfo)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                await _sendEmailService.SendEmailAsync(userInfo);
+                TempData["error"] = "Повідомлення не відправлено! Заповніть всі поля.";
+                return RedirectToAction("Index");
             }
+            await _sendEmailService.SendEmailAsync(userInfo);
+            TempData["success"] = "Повідомлення відправлено!";
             return RedirectToAction("Index");
         }
 

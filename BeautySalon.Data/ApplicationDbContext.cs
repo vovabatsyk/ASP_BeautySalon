@@ -14,5 +14,7 @@ namespace BeautySalon.Data
 
         public DbSet<PostModel> PostModels { get; set; }
         public DbSet<ProductModel> ProductModels { get; set; }
+        public DbSet<CommentModel> CommentModels { get; set; }
+
     }
 }

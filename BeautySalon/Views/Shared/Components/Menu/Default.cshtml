@@ -16,24 +16,20 @@
             <li><a asp-controller="Home" asp-action="Index">Головна</a></li>
             <li><a asp-controller="Blog" asp-action="Index">Новини</a></li>
 
-          @*  @if (SignInManager.IsSignedIn(User))
-            {*@
-            @*    <li>
-                    <a onclick="$('#logoutForm').submit();" style="cursor: pointer">Logout</a>
+            @if (SignInManager.IsSignedIn(User))
+            {
+                <li>
+                    <a onclick="$('#logoutForm').submit();" style="cursor: pointer">Вийти</a>
                     <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new {area = ""})"></form>
-                </li>*@
+                </li>
                 <li><a asp-controller="Admin" asp-action="Index">Адмінка</a>  </li>
-
-               @* <li>
-                    <a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
-                        Hello @((await UserManager.GetUserAsync(User)).FirsName)!
-                    </a>
-                </li>*@
-        @*    }
+            }
             else
-            {*@
-                @*<li><a asp-area="Identity" asp-page="/Account/Login">Login</a></li>*@
-            @*}*@
+            {
+                <li><a asp-area="Identity" asp-page="/Account/Login">Адмінка</a></li>
+
+            }
+
         </ul>
     </nav>
 </div>
