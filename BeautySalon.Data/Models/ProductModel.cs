@@ -13,7 +13,7 @@ namespace BeautySalon.Data.Models
         [Display(Name = "Ціна")]
         public int Price { get; set; }
 
-        [Display(Name = "Знижка?")]
+        [Display(Name = "Показати?")]
         public bool IsDiscount { get; set; }
     }
 }

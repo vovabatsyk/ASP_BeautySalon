@@ -1,6 +1,7 @@
 ﻿using BeautySalon.Data.Models;
 using BeautySalon.Models;
 using BeautySalon.Services;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BeautySalon.Controllers
@@ -11,22 +12,39 @@ namespace BeautySalon.Controllers
         private readonly IProductService _productService;
         private readonly ICommentService _commentService;
 
-        public AdminController(IPostService postService, IProductService productService, ICommentService commentService)
+        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly UserManager<ApplicationUser> _userManager;
+
+        public AdminController(IPostService postService,
+                                IProductService productService,
+                                ICommentService commentService,
+                                SignInManager<ApplicationUser> signInManager,
+                                UserManager<ApplicationUser> userManager)
         {
             _postService = postService;
             _productService = productService;
             _commentService = commentService;
+            _signInManager = signInManager;
+            _userManager = userManager;
         }
 
         #region News
         public IActionResult Index()
         {
+            if (!_signInManager.IsSignedIn(User))
+            {
+                return LocalRedirect("~/Identity/Account/Login");
+            }
             var model = _postService.GetAllModels();
             return View(model);
         }
 
         public IActionResult AddPost()
         {
+            if (!_signInManager.IsSignedIn(User))
+            {
+                return LocalRedirect("~/Identity/Account/Login");
+            }
             return View();
         }
 
@@ -61,6 +79,10 @@ namespace BeautySalon.Controllers
 
         public IActionResult EditPost(int? id)
         {
+            if (!_signInManager.IsSignedIn(User))
+            {
+                return LocalRedirect("~/Identity/Account/Login");
+            }
             if (id == null || id == 0)
             {
                 return NotFound();
@@ -96,6 +118,10 @@ namespace BeautySalon.Controllers
 
         public IActionResult DeletePost(int? id)
         {
+            if (!_signInManager.IsSignedIn(User))
+            {
+                return LocalRedirect("~/Identity/Account/Login");
+            }
             if (id == null || id == 0)
             {
                 return NotFound();
@@ -132,12 +158,20 @@ namespace BeautySalon.Controllers
 
         public IActionResult Products()
         {
+            if (!_signInManager.IsSignedIn(User))
+            {
+                return LocalRedirect("~/Identity/Account/Login");
+            }
             var model = _productService.GetAllModels();
             return View(model);
         }
 
         public IActionResult AddProduct()
         {
+            if (!_signInManager.IsSignedIn(User))
+            {
+                return LocalRedirect("~/Identity/Account/Login");
+            }
             return View();
         }
 
@@ -162,6 +196,10 @@ namespace BeautySalon.Controllers
 
         public IActionResult EditProduct(int? id)
         {
+            if (!_signInManager.IsSignedIn(User))
+            {
+                return LocalRedirect("~/Identity/Account/Login");
+            }
             if (id == null || id == 0)
             {
                 return NotFound();
@@ -192,6 +230,10 @@ namespace BeautySalon.Controllers
 
         public IActionResult DeleteProduct(int? id)
         {
+            if (!_signInManager.IsSignedIn(User))
+            {
+                return LocalRedirect("~/Identity/Account/Login");
+            }
             if (id == null || id == 0)
             {
                 return NotFound();
@@ -227,12 +269,20 @@ namespace BeautySalon.Controllers
         #region Comments
         public IActionResult Comments()
         {
+            if (!_signInManager.IsSignedIn(User))
+            {
+                return LocalRedirect("~/Identity/Account/Login");
+            }
             var model = _commentService.GetAllModels();
             return View(model);
         }
 
         public IActionResult AddComment()
         {
+            if (!_signInManager.IsSignedIn(User))
+            {
+                return LocalRedirect("~/Identity/Account/Login");
+            }
             return View();
         }
 
@@ -268,6 +318,10 @@ namespace BeautySalon.Controllers
 
         public IActionResult EditComment(int? id)
         {
+            if (!_signInManager.IsSignedIn(User))
+            {
+                return LocalRedirect("~/Identity/Account/Login");
+            }
             if (id == null || id == 0)
             {
                 return NotFound();
@@ -309,6 +363,10 @@ namespace BeautySalon.Controllers
 
         public IActionResult DeleteComment(int? id)
         {
+            if (!_signInManager.IsSignedIn(User))
+            {
+                return LocalRedirect("~/Identity/Account/Login");
+            }
             if (id == null || id == 0)
             {
                 return NotFound();

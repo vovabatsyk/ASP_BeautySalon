@@ -19,7 +19,7 @@ namespace BeautySalon.Data.Models
         [Display(Name = "Місто*")]
         public string UserCity { get; set; }
 
-        [Display(Name = "Позитивний?")]
+        [Display(Name = "Показати?")]
         public bool IsPositive { get; set; }
     }
 }
