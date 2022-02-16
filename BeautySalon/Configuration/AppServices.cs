@@ -1,4 +1,5 @@
-﻿using BeautySalon.Data;
+﻿using Azure.Storage.Blobs;
+using BeautySalon.Data;
 using BeautySalon.Data.Models;
 using BeautySalon.Services;
 using Microsoft.EntityFrameworkCore;
@@ -10,7 +11,11 @@ namespace BeautySalon.Configuration
     {
         public static void AddDefaultServices(this IServiceCollection serviceCollection, IConfiguration configuration)
         {
+            var azureStorageConnection = configuration.GetValue<string>("AzureStorageConnection");
 
+            serviceCollection.AddSingleton(x => new BlobServiceClient(azureStorageConnection));
+
+            serviceCollection.AddTransient<IImageService, ImageService>();
             serviceCollection.AddTransient<IPostService, PostService>();
             serviceCollection.AddTransient<IProductService, ProductService>();
             serviceCollection.AddTransient<ICommentService, CommentService>();
