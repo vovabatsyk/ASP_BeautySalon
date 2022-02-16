@@ -53,6 +53,10 @@
                     </div>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" style="cursor:pointer;" asp-controller="Admin" asp-action="Images">Картинки</a>
+
+                </li>
+                <li class="nav-item">
                     <a onclick="$('#logoutForm').submit();" class="nav-link" style="cursor:pointer;">Вийти</a>
                     <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new {area = ""})"></form>
 

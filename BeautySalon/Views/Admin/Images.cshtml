@@ -1,0 +1,19 @@
+﻿@model List<string>
+
+<div class="row">
+    <div class="col-md-12">
+        <a asp-action="AddImage" asp-controller="Admin" class="btn btn-success my-2">Додати</a>
+    </div>
+    <div class="col-md-12">
+        <ul>
+            @foreach (var item in Model)
+            {
+                <li>
+                    <a asp-action="DeleteImage" asp-controller="Admin" class="btn btn-danger my-2" asp-route-name="@item">Видалити</a>
+                    <a asp-action="ViewImage" asp-controller="Admin" class="btn btn-primary my-2" target="_blank" asp-route-name="@item">@item</a>
+
+                </li>
+            }
+        </ul>
+    </div>
+</div>

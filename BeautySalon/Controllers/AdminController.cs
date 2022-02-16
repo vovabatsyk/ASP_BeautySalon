@@ -1,8 +1,12 @@
 ﻿using BeautySalon.Data.Models;
 using BeautySalon.Models;
 using BeautySalon.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace BeautySalon.Controllers
 {
@@ -11,6 +15,7 @@ namespace BeautySalon.Controllers
         private readonly IPostService _postService;
         private readonly IProductService _productService;
         private readonly ICommentService _commentService;
+        private readonly IImageService _imageService;
 
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
@@ -18,12 +23,14 @@ namespace BeautySalon.Controllers
         public AdminController(IPostService postService,
                                 IProductService productService,
                                 ICommentService commentService,
+                                IImageService imageService,
                                 SignInManager<ApplicationUser> signInManager,
                                 UserManager<ApplicationUser> userManager)
         {
             _postService = postService;
             _productService = productService;
             _commentService = commentService;
+            _imageService = imageService;
             _signInManager = signInManager;
             _userManager = userManager;
         }
@@ -411,6 +418,54 @@ namespace BeautySalon.Controllers
                 return RedirectToAction("Comments");
             }
         }
+        #endregion
+
+        #region Image
+
+        [HttpGet]
+        public async Task<IActionResult> Images()
+        {
+            var files = await _imageService.AllImages("images");
+
+            return View(files);
+        }
+
+        [HttpGet]
+        public IActionResult AddImage()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddImage(IFormFile file)
+        {
+            if (file == null || file.Length < 1) return View();
+
+            var fileName = Guid.NewGuid() + Path.GetExtension(file.FileName);
+
+            var res = await _imageService.UploadImage(fileName, file, "images");
+
+            if (res) return RedirectToAction("Images");
+
+            return View();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ViewImage(string name)
+        {
+            var res = await _imageService.GetImage(name, "images");
+
+            return Redirect(res);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> DeleteImage(string name)
+        {
+            await _imageService.DeleteImage(name, "images");
+
+            return RedirectToAction("Images");
+        }
+
         #endregion
     }
 }
